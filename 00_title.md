@@ -169,7 +169,7 @@ const bucketPolicy = new BucketPolicy(this, "bucketPolicy", {
 Synchronize the content of your local YUM repository to the S3 bucket
 
 ```bash
-$  aws s3 sync --profile cdk s3_yum_repository \
+$ aws s3 sync --profile cdk s3_yum_repository \
      s3://correttoyumrepositorysta-correttos3bucketbbeb0a25-1p908wuzpckvj  
 ```
 
@@ -187,8 +187,8 @@ $  aws s3 sync --profile cdk s3_yum_repository \
 ## Create repository file
 
 ```bash
-cd /etc/yum.repos.d/
-touch s3.repo
+$ cd /etc/yum.repos.d/
+$ touch s3.repo
 ```
 
 Content of the repository file
@@ -220,6 +220,15 @@ Fertig.
 ```
 
 
+## Bewarre
+
+* S3 treats "+" characters in the path as though they were space characters
+* Renaming of rpms maybe required before
+  * running `createrepo`
+  * syncing to S3
+
+
+
 ## Links
 
 * [AdoptOpenJDK](https://adoptopenjdk.net/)
@@ -231,3 +240,4 @@ Fertig.
 * [S3 as Yum repo](https://gist.github.com/phrawzty/ca3453addc92a13a9c19)
 * [Using Amazon S3 as a Hosted Yum Repository](https://www.rightbrainnetworks.com/2015/01/09/using-amazon-s3-as-a-hosted-yum-repository/)
 * [Yet Another Yum S3 Plugin](https://github.com/henrysher/cob)
+* [S3 Escaping](https://stackoverflow.com/questions/38282932/amazon-s3-url-being-encoded-to-2)
