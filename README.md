@@ -1,6 +1,8 @@
 <!-- markdownlint-disable MD012 MD014 -->
 # YUM repository hosted in S3
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/46b1c251e14247b59ca4b1ccc76075f6)](https://app.codacy.com/manual/stefan_20/s3_yum_repository_slides?utm_source=github.com&utm_medium=referral&utm_content=stefanfreitag/s3_yum_repository_slides&utm_campaign=Badge_Grade_Dashboard)
+
 
 
 ## Disclaimer
