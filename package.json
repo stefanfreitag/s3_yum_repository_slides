@@ -3,16 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "present": "live-server ./public/ --verbose",
+    "present": "live-server ./docs/ --verbose",
     "export": "decktape remark http://127.0.0.1:8080/index.html slides.pdf",
-    "lint-md": "remark public/*.md"
+    "lint-md": "remark docs/*.md"
   },
   "repository": {
     "type": "git",
     "url": ""
   },
-  "author": "",
-  "license": "",
+  "author": "Stefan Freitag",
+  "license": "Apache-2.0",
   "bugs": {
     "url": ""
   },
@@ -23,11 +23,7 @@
   },
   "dependencies": {
     "remark-lint": "^7.0.0",
-    "remark-preset-lint-markdown-style-guide": "^3.0.0"
-  },
-  "remarkConfig": {
-    "plugins": [
-      "remark-preset-lint-markdown-style-guide"
-    ]
+    "remark-preset-lint-recommended": "^4.0.0"
   }
+  
 }
