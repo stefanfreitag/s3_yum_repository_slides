@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "present": "live-server ./public/ --verbose",
-    "export": "decktape remark http://127.0.0.1:8080/index.html slides.pdf"
+    "export": "decktape remark http://127.0.0.1:8080/index.html slides.pdf",
+    "lint-md": "remark public/*.md"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,14 @@
   "devDependencies": {
     "decktape": "^2.11.0",
     "live-server": "^1.2.1"
+  },
+  "dependencies": {
+    "remark-lint": "^7.0.0",
+    "remark-preset-lint-markdown-style-guide": "^3.0.0"
+  },
+  "remarkConfig": {
+    "plugins": [
+      "remark-preset-lint-markdown-style-guide"
+    ]
   }
 }

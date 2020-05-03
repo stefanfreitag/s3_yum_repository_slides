@@ -11,10 +11,9 @@ background-image: url('./images/pero-kalimero-9BJRGlqoIUk-unsplash.jpg')
 
 > The idea of using an S3 bucket as YUM repository is not new. Several blog posts are available on the Internet.
 
-* We will use the [AWS Cloud Development Kit (CDK)](https://github.com/aws/aws-cdk) to setup the S3 bucket.
-* By doing so we are following the Infrastructure-as-Code ([IaC](https://en.wikipedia.org/wiki/Infrastructure_as_code)) pattern.
-
-* To keep it simple, the repository for CentOS 8 is setup locally and then synced to the bucket using the AWS CLI.
+- We will use the [AWS Cloud Development Kit (CDK)](https://github.com/aws/aws-cdk) to setup the S3 bucket.
+- By doing so we are following the Infrastructure-as-Code ([IaC](https://en.wikipedia.org/wiki/Infrastructure_as_code)) pattern.
+- To keep it simple, the repository for CentOS 8 is setup locally and then synced to the bucket using the AWS CLI.
 
 ---
 class: middle, left
@@ -81,8 +80,8 @@ Prepare the sub-directory structure
 mkdir -p s3_yum_repository/{noarch,x86_64,SRPMS}
 ```
 
-* Only the `x86_64` folder will be used for storing our RPMs.
-* Download the files of Adopt JDK & JRE as well as Corretto 11 JDK for this architecture.
+- Only the `x86_64` folder will be used for storing our RPMs.
+- Download the files of Adopt JDK & JRE as well as Corretto 11 JDK for this architecture.
 
 ```shell
 wget https://adoptopenjdk.jfrog.io/adoptopenjdk/rpm/centos/8/x86_64/Packages/adoptopenjdk-13-hotspot-13+33-1.x86_64.rpm
@@ -131,8 +130,8 @@ background-image: url('./images/pero-kalimero-9BJRGlqoIUk-unsplash.jpg')
 
 ### Creating the bucket
   
-* The bucket will not contain any kind of sensitive data, so the encryption is turned off.
-* To restrict the access to the bucket the `blockPublicAccess` and `publicReadAccess` are explicitly listed.
+- The bucket will not contain any kind of sensitive data, so the encryption is turned off.
+- To restrict the access to the bucket the `blockPublicAccess` and `publicReadAccess` are explicitly listed.
 
 ```javascript
 const bucket: Bucket = new Bucket(this, "CorrettoS3Bucket", {
@@ -231,8 +230,8 @@ background-image: url('./images/pero-kalimero-9BJRGlqoIUk-unsplash.jpg')
 
 For the test a CentOS 8 virtual machine can be setup by
 
-* Using the ISO image `CentOS-8.1.1911-x86_64-boot.iso` as starting point
-* Choose _minimal setup_ to define the set of packages to install
+- Using the ISO image `CentOS-8.1.1911-x86_64-boot.iso` as starting point
+- Choose *minimal setup* to define the set of packages to install
 
 Alternatively a Docker container can be used - this approach is the preferred one.
 
@@ -331,8 +330,8 @@ background-image: url('./images/pero-kalimero-9BJRGlqoIUk-unsplash.jpg')
 S3 treats "+" characters in the path as though they were space characters.
 Hence renaming of the rpms files is required before
 
-* running `createrepo`
-* syncing the local content to S3
+- running `createrepo`
+- syncing the local content to S3
 
 ---
 
@@ -341,13 +340,13 @@ background-image: url('./images/pero-kalimero-9BJRGlqoIUk-unsplash.jpg')
 
 ## Links
 
-* [AdoptOpenJDK](https://adoptopenjdk.net/)
-* [AdoptOpenJDK Downloads for CentOS 8](https://adoptopenjdk.jfrog.io/adoptopenjdk/rpm/centos/8/x86_64/Packages/)
-* [AWS Cloud Development Kit](https://github.com/aws/aws-cdk)
-* [CentOS ISO Download Page](https://wiki.centos.org/Download)
-* [Amazon Corretto 11 Guide for Linux](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/linux-info.html)
-* [createrepo man page](https://linux.die.net/man/8/createrepo)
-* [S3 as Yum repo](https://gist.github.com/phrawzty/ca3453addc92a13a9c19)
-* [Using Amazon S3 as a Hosted Yum Repository](https://www.rightbrainnetworks.com/2015/01/09/using-amazon-s3-as-a-hosted-yum-repository/)
-* [Yet Another Yum S3 Plugin](https://github.com/henrysher/cob)
-* [S3 Escaping](https://stackoverflow.com/questions/38282932/amazon-s3-url-being-encoded-to-2)
+- [AdoptOpenJDK](https://adoptopenjdk.net/)
+- [AdoptOpenJDK Downloads for CentOS 8](https://adoptopenjdk.jfrog.io/adoptopenjdk/rpm/centos/8/x86_64/Packages/)
+- [AWS Cloud Development Kit](https://github.com/aws/aws-cdk)
+- [CentOS ISO Download Page](https://wiki.centos.org/Download)
+- [Amazon Corretto 11 Guide for Linux](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/linux-info.html)
+- [createrepo man page](https://linux.die.net/man/8/createrepo)
+- [S3 as Yum repo](https://gist.github.com/phrawzty/ca3453addc92a13a9c19)
+- [Using Amazon S3 as a Hosted Yum Repository](https://www.rightbrainnetworks.com/2015/01/09/using-amazon-s3-as-a-hosted-yum-repository/)
+- [Yet Another Yum S3 Plugin](https://github.com/henrysher/cob)
+- [S3 Escaping](https://stackoverflow.com/questions/38282932/amazon-s3-url-being-encoded-to-2)
